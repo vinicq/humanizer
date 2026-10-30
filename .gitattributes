@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+# Left out of `git archive` and GitHub's "Download ZIP", so the ZIP is a clean skill
+/.agents export-ignore
+/.claude-plugin export-ignore
+/plugins export-ignore
+/codex export-ignore
+/scripts export-ignore
+/wikipedia export-ignore
+/assets export-ignore
+/AGENTS.md export-ignore
