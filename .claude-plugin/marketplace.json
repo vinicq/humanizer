@@ -1,0 +1,14 @@
+{
+  "name": "humanizer",
+  "description": "Writing and review tools for English and Brazilian Portuguese.",
+  "owner": {
+    "name": "Vinicius Queiroz"
+  },
+  "plugins": [
+    {
+      "name": "humanizer",
+      "source": "./",
+      "description": "The humanizer skill and the humanizer-revisor subagent for English and Brazilian Portuguese."
+    }
+  ]
+}
