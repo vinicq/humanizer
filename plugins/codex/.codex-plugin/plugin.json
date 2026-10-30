@@ -1,0 +1,39 @@
+{
+  "name": "humanizer",
+  "version": "7.0.0",
+  "description": "Write, edit and review English and Brazilian Portuguese text without AI-writing patterns, keeping facts, meaning and the author's voice.",
+  "author": {
+    "name": "Vinicius Queiroz",
+    "url": "https://github.com/vinicq"
+  },
+  "homepage": "https://github.com/vinicq/humanizer",
+  "repository": "https://github.com/vinicq/humanizer",
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "editing",
+    "humanizer",
+    "review",
+    "pt-br"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Humanizer",
+    "shortDescription": "Edit English and Portuguese text so it reads like a person wrote it.",
+    "longDescription": "Rewrites or reviews text in English or Brazilian Portuguese against a catalog of 50 AI-writing patterns drawn from the Wikipedia guides and published research. Keeps facts, meaning, technical terms and degree of certainty, and can match a sample of your own writing.",
+    "developerName": "Vinicius Queiroz",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/vinicq/humanizer",
+    "brandColor": "#1F3A5F",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "defaultPrompt": [
+      "Use $humanizer to rewrite this text without changing its facts.",
+      "Use $humanizer to point out the AI-writing patterns in this text without rewriting it."
+    ]
+  }
+}

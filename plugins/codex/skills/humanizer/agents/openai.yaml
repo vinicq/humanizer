@@ -1,0 +1,7 @@
+interface:
+  display_name: "Humanizer"
+  short_description: "Writes and reviews text without AI-writing patterns, without inventing facts or changing meaning."
+  default_prompt: "Use the humanizer skill on the text below and return only the final version."
+
+policy:
+  allow_implicit_invocation: true
