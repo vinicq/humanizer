@@ -25,61 +25,61 @@ https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Grandes_modelos_de_linguagem
 
 ## 2. Academic research
 
-**S04. Rodrigues, Sturm e Pinheiro, A linguistic comparison between human- and AI-generated content, iScience, 2026.** Compares Portuguese texts, including true and fake news, with outputs from GPT-4o, Mistral Large and Llama 3.3 70B, and reports tendencies in formality, structure and tone in that set. Checked against the PubMed record and abstract. The results are not generalized to every genre or model. Core.
+**S04. Rodrigues, Sturm and Pinheiro, A linguistic comparison between human- and AI-generated content, iScience, 2026.** Compares Portuguese texts, including true and fake news, with outputs from GPT-4o, Mistral Large and Llama 3.3 70B, and reports tendencies in formality, structure and tone in that set. Checked against the PubMed record and abstract. The results are not generalized to every genre or model. Core.
 
 https://pubmed.ncbi.nlm.nih.gov/41809036/
 
 https://doi.org/10.1016/j.isci.2026.114976
 
-**S05. Geng e Trotta, Human-LLM Coevolution: Evidence from Academic Writing, Findings of ACL 2025.** Describes changes in word frequency after marker words became publicly known. Supports the caution against fixed lists used as diagnosis; it does not establish a list of words to avoid. Core.
+**S05. Geng and Trotta, Human-LLM Coevolution: Evidence from Academic Writing, Findings of ACL 2025.** Describes changes in word frequency after marker words became publicly known. Supports the caution against fixed lists used as diagnosis; it does not establish a list of words to avoid. Core.
 
 https://aclanthology.org/2025.findings-acl.657/
 
-**S06. Kobak e colaboradores, Delving into LLM-assisted writing in biomedical publications through excess vocabulary, Science Advances, 2025.** Lexical frequency analysis of biomedical abstracts (first version in 2024 under the title "Delving into ChatGPT usage in academic writing through excess vocabulary"). Supports attention vocabulary as a signal of frequency, not of authorship. Does not support a sentence-length rule. Core.
+**S06. Kobak et al., Delving into LLM-assisted writing in biomedical publications through excess vocabulary, Science Advances, 2025.** Lexical frequency analysis of biomedical abstracts (first version in 2024 under the title "Delving into ChatGPT usage in academic writing through excess vocabulary"). Supports attention vocabulary as a signal of frequency, not of authorship. Does not support a sentence-length rule. Core.
 
 https://arxiv.org/abs/2406.07016
 
-**S07. Juzek e Ward, Why Does ChatGPT "Delve" So Much? Exploring the Sources of Lexical Overrepresentation in Large Language Models, COLING 2025.** Investigates why certain words appear in excess in model text. Under review.
+**S07. Juzek and Ward, Why Does ChatGPT "Delve" So Much? Exploring the Sources of Lexical Overrepresentation in Large Language Models, COLING 2025.** Investigates why certain words appear in excess in model text. Under review.
 
 https://arxiv.org/abs/2412.11385
 
-**S08. Liang e colaboradores, GPT detectors are biased against non-native English writers, Patterns, 2023.** Detector false positives on texts by non-native speakers. Supports not treating fluency, restricted vocabulary or a detector score as proof of authorship, and the rule against impoverishing the writing of non-native speakers (R08). Core.
+**S08. Liang et al., GPT detectors are biased against non-native English writers, Patterns, 2023.** Detector false positives on texts by non-native speakers. Supports not treating fluency, restricted vocabulary or a detector score as proof of authorship, and the rule against impoverishing the writing of non-native speakers (R08). Core.
 
 https://arxiv.org/abs/2304.02819
 
-**S09. Basani, Chen e colaboradores, Diversity Boosts AI-Generated Text Detection (DivEye), 2025.** Surprisal features and the importance of feature groups in a trained detector: second-order 39.4%, distributional 34.2% and first-order differences 23.7%. These are contributions within that experiment, not detection rates. None of these numbers became a writing rule. Core.
+**S09. Basani, Chen et al., Diversity Boosts AI-Generated Text Detection (DivEye), 2025.** Surprisal features and the importance of feature groups in a trained detector: second-order 39.4%, distributional 34.2% and first-order differences 23.7%. These are contributions within that experiment, not detection rates. None of these numbers became a writing rule. Core.
 
 https://arxiv.org/abs/2509.18880
 
-**S10. Russell e colaboradores, StoryScope: Investigating idiosyncrasies in AI fiction, 2026.** Narrative-structure traits in model-generated fiction. Under review.
+**S10. Russell et al., StoryScope: Investigating idiosyncrasies in AI fiction, 2026.** Narrative-structure traits in model-generated fiction. Under review.
 
 https://arxiv.org/abs/2604.03136
 
-**S11. Guo e colaboradores, How Close is ChatGPT to Human Experts? Comparison Corpus, Evaluation, and Detection (HC3), 2023.** Comparative corpus of human and model answers, with analysis of length and lexical diversity. Under review.
+**S11. Guo et al., How Close is ChatGPT to Human Experts? Comparison Corpus, Evaluation, and Detection (HC3), 2023.** Comparative corpus of human and model answers, with analysis of length and lexical diversity. Under review.
 
 https://arxiv.org/abs/2301.07597
 
-**S12. Paech e colaboradores, Antislop: A Comprehensive Framework for Identifying and Eliminating Repetitive Patterns in Language Models, 2025.** Identification and removal of repetitive patterns, during generation and after it. Under review.
+**S12. Paech et al., Antislop: A Comprehensive Framework for Identifying and Eliminating Repetitive Patterns in Language Models, 2025.** Identification and removal of repetitive patterns, during generation and after it. Under review.
 
 https://arxiv.org/abs/2510.15061
 
-**S13. Xu e colaboradores, Base Models Look Human To AI Detectors, 2026.** Indicates that detectors react to the assistant register produced by fine-tuning, not to model use as such. Under review.
+**S13. Xu et al., Base Models Look Human To AI Detectors, 2026.** Indicates that detectors react to the assistant register produced by fine-tuning, not to model use as such. Under review.
 
 https://arxiv.org/abs/2605.19516
 
-**S14. Cheng e colaboradores, Adversarial Paraphrasing: A Universal Attack for Humanizing AI-Generated Text, 2025.** Paraphrase attack against detectors. Recorded to delimit scope: this skill does not chase detectors and does not adopt evasion techniques. Under review.
+**S14. Cheng et al., Adversarial Paraphrasing: A Universal Attack for Humanizing AI-Generated Text, 2025.** Paraphrase attack against detectors. Recorded to delimit scope: this skill does not chase detectors and does not adopt evasion techniques. Under review.
 
 https://arxiv.org/abs/2506.07001
 
-**S15. Bitton e colaboradores, Detecting Stylistic Fingerprints of Large Language Models, 2025.** Style traits that distinguish model families. Under review; does not support a per-model rule selector.
+**S15. Bitton et al., Detecting Stylistic Fingerprints of Large Language Models, 2025.** Style traits that distinguish model families. Under review; does not support a per-model rule selector.
 
 https://arxiv.org/abs/2503.01659
 
-**S16. Wu e colaboradores, A Survey on LLM-Generated Text Detection: Necessity, Methods, and Future Directions, 2023.** Review of the detection literature. Under review.
+**S16. Wu et al., A Survey on LLM-Generated Text Detection: Necessity, Methods, and Future Directions, 2023.** Review of the detection literature. Under review.
 
 https://arxiv.org/abs/2310.14724
 
-**S17 to S20. Detection literature.** Mitchell e colaboradores, DetectGPT (2023); Hans e colaboradores, Spotting LLMs With Binoculars (2024); Verma e colaboradores, Ghostbuster (2023); Dugan e colaboradores, RAID (2024). Context on what detectors measure and how robustly. No detector is a goal of this skill. Under review.
+**S17 to S20. Detection literature.** Mitchell et al., DetectGPT (2023); Hans et al., Spotting LLMs With Binoculars (2024); Verma et al., Ghostbuster (2023); Dugan et al., RAID (2024). Context on what detectors measure and how robustly. No detector is a goal of this skill. Under review.
 
 https://arxiv.org/abs/2301.11305
 
