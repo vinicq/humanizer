@@ -1,7 +1,7 @@
 {
   "name": "humanizer",
   "version": "7.0.0",
-  "description": "Escrita e revisão em PT-BR e inglês sem padrões artificiais de IA, preservando fatos, sentido e voz. Inclui a skill humanizer e o subagente humanizer-revisor.",
+  "description": "Write, edit and review English and Brazilian Portuguese text without AI-writing patterns, keeping facts, meaning and voice. Includes the humanizer skill and the humanizer-revisor subagent.",
   "author": {
     "name": "Vinicius Queiroz",
     "url": "https://github.com/vinicq"
