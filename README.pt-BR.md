@@ -2,7 +2,7 @@
 
 [English](README.md) · **Português (Brasil)**
 
-Uma Agent Skill para escrever, editar e revisar textos em inglês e em português do Brasil, de modo que soem como escritos por uma pessoa para um leitor. Ela tira os vícios que denunciam a saída de um modelo e mantém intactos os fatos, o sentido, os termos técnicos e a voz do autor.
+Uma Agent Skill para escrever, editar e revisar textos em inglês e em português do Brasil, para que pareçam escritos por uma pessoa e pensados para um leitor. Tira os vícios que denunciam a saída de um modelo e preserva os fatos, o sentido, os termos técnicos e a voz do autor.
 
 > **Antes** (saída bruta do modelo)
 > A Padaria Lúcia faz parte do bairro da Ponta Verde, em Maceió, desde 1998. Fundada por Lúcia Ferreira, ficou conhecida pelo pão de queijo e pelo bolo de macaxeira, dois favoritos de quem passa por aqui. [...] Seja para começar a manhã ou fazer uma pausa para o café da tarde, venha conhecer a nossa padaria.
@@ -20,18 +20,18 @@ Versão 7.0.0 · por Vinicius Queiroz · MIT
 
 | Caminho | O que faz |
 |---|---|
-| `SKILL.md` | A skill. Escopo, prioridades, regras de preservação R01-R12, o procedimento de edição e a checagem final. Carrega em toda execução. |
-| `references/` | Detalhes que só carregam quando a tarefa pede: `en/` (catálogo em inglês EN01-EN78, revisão final e exemplos) e `pt-br/` (catálogo em português PT01-PT86, revisão final e exemplos, em português), mais `voice-and-genres.md` e `sources.md`, comuns aos dois idiomas. |
+| `SKILL.md` | A skill. Define escopo, prioridades, as regras de preservação R01-R12, o procedimento de edição e a checagem final. Entra em toda execução. |
+| `references/` | Detalhes lidos só quando a tarefa pede: `en/` (catálogo em inglês EN01-EN78, revisão final e exemplos) e `pt-br/` (catálogo em português PT01-PT86, revisão final e exemplos), além de `voice-and-genres.md` e `sources.md`, usados nos dois idiomas. |
 | `agents/humanizer-revisor.md` | Subagente revisor somente leitura para o Claude Code. Lista achados e não edita. |
 | `codex/humanizer-revisor.toml` | O mesmo revisor como agente personalizado do Codex. |
 | `agents/openai.yaml` | Como a skill aparece no Codex. |
 | `.claude-plugin/` | Manifestos de plugin e de marketplace do Claude Code. |
-| `plugins/codex/` | O plugin do Codex: cópia gerada da skill. Não edite à mão. |
+| `plugins/codex/` | Plugin do Codex: cópia da skill gerada por script. Não edite à mão. |
 | `.agents/plugins/marketplace.json` | Manifesto de marketplace do Codex, que aponta para `plugins/codex`. |
 | `assets/icon.png` | Ícone do plugin. |
 | `scripts/build-codex-plugin.py` | Gera `plugins/codex` a partir da raiz do repositório. |
 | `scripts/check-wikipedia.py` | Avisa quando as páginas da Wikipédia que sustentam os catálogos mudaram. |
-| `wikipedia/` | Extração, seção por seção, dessas páginas. Material de manutenção; a skill não lê. |
+| `wikipedia/` | Texto dessas páginas, extraído seção por seção. Serve à manutenção; a skill não o lê. |
 | `AGENTS.md` | Instruções para agentes de código que editam este repositório. |
 | `CHANGELOG.md` · `LICENSE` | Histórico de versões e licença. |
 
@@ -61,7 +61,7 @@ Como plugin, com a skill e o revisor:
 
 Pelo terminal: `claude plugin marketplace add vinicq/humanizer` e `claude plugin install humanizer@humanizer`. A skill do plugin se chama `/humanizer:humanizer`.
 
-Para ter o nome curto `/humanizer`, clone na sua pasta de skills e copie o revisor:
+Para ter o nome curto `/humanizer`, clone na pasta de skills e copie o revisor:
 
 ```bash
 git clone https://github.com/vinicq/humanizer.git ~/.claude/skills/humanizer
@@ -79,7 +79,7 @@ Escolha um método só. Com os dois, aparecem duas skills `humanizer`.
 
 ### App desktop do Claude e claude.ai
 
-- **Aba Code do app desktop:** lê a mesma pasta `~/.claude` e os mesmos plugins de escopo de usuário que o CLI, então os passos acima já cobrem. No app você também pode adicionar o plugin pelo botão `+` ao lado da caixa de texto, em Add plugins.
+- **Aba Code do app desktop:** lê a mesma pasta `~/.claude` e os mesmos plugins de escopo de usuário que o CLI, então os passos acima já cobrem. No app também dá para adicionar o plugin pelo botão `+` ao lado da caixa de texto, em Add plugins.
 - **Chat e Cowork (app desktop e claude.ai):** pegam as skills da sua conta, não de `~/.claude`. Monte um ZIP cuja raiz seja uma pasta `humanizer/`, envie em **Customize > Skills** e ative:
 
 ```bash
@@ -87,9 +87,9 @@ git clone https://github.com/vinicq/humanizer.git && cd humanizer
 git archive --format=zip --prefix=humanizer/ -o humanizer.zip HEAD
 ```
 
-O `git archive` respeita as linhas `export-ignore` do `.gitattributes`, então o ZIP deixa de fora as pastas de manutenção (`plugins/`, `codex/`, `scripts/`, `wikipedia/`, `assets/`, `.agents/`, `.claude-plugin/`) e leva só a skill. O botão "Download ZIP" do GitHub entrega uma pasta chamada `humanizer-main`, que precisa ser renomeada para `humanizer` antes de zipar de novo; por isso o comando `git archive` é mais simples.
+O `git archive` respeita as linhas `export-ignore` do `.gitattributes`, então o ZIP não inclui as pastas de manutenção (`plugins/`, `codex/`, `scripts/`, `wikipedia/`, `assets/`, `.agents/`, `.claude-plugin/`) e leva só a skill. O botão "Download ZIP" do GitHub entrega uma pasta chamada `humanizer-main`, que é preciso renomear para `humanizer` antes de zipar de novo. O `git archive` evita esse passo.
 
-Skills enviadas exigem a execução de código ligada. Contas Team já vêm com ela; no Enterprise, um proprietário precisa habilitar a execução de código e as Skills. O subagente não se aplica aqui: o chat não tem subagentes.
+Skills enviadas só funcionam com a execução de código ativada. Nas contas Team ela já vem ativa; no Enterprise, um proprietário precisa habilitar a execução de código e as Skills. O subagente não vale aqui: o chat não tem subagentes.
 
 ### Codex CLI
 
@@ -100,7 +100,7 @@ codex plugin marketplace add vinicq/humanizer
 codex plugin add humanizer@humanizer
 ```
 
-Abra uma conversa nova. A skill é `humanizer:humanizer`: peça pelo nome, escolha em `/skills` ou descreva a tarefa; o Codex também a seleciona pela descrição. O plugin fica em `plugins/codex` e é gerado a partir da raiz do repositório por `scripts/build-codex-plugin.py`, então edite os arquivos da raiz, nunca a cópia gerada.
+Abra uma conversa nova. A skill é `humanizer:humanizer`: peça-a pelo nome, escolha-a em `/skills` ou descreva a tarefa; o Codex também a escolhe pela descrição. O plugin fica em `plugins/codex` e é gerado a partir da raiz do repositório por `scripts/build-codex-plugin.py`, então edite os arquivos da raiz, nunca a cópia gerada.
 
 O revisor é um agente personalizado do Codex, em arquivo separado. Copie-o de um clone:
 
@@ -110,7 +110,7 @@ mkdir -p ~/.codex/agents
 cp ~/src/humanizer/codex/humanizer-revisor.toml ~/.codex/agents/
 ```
 
-Ele fica disponível como o subagente `humanizer-revisor`.
+Ele passa a existir como o subagente `humanizer-revisor`.
 
 **Alternativa manual** (Codex sem o plugin, e outros agentes que leem `~/.agents/skills`): clone onde quiser, por exemplo `~/src/humanizer`, e crie um link ou copie **só** `plugins/codex/skills/humanizer` para `~/.agents/skills/humanizer`. Não clone o repositório inteiro em `~/.agents/skills`: o Codex passa a achar a skill duas vezes, na raiz e em `plugins/codex`.
 
@@ -149,11 +149,11 @@ A maioria dos agentes que aceitam Agent Skills lê `~/.agents/skills`, então o 
 | Antigravity | `.agents/skills/humanizer` no projeto | - |
 | Windsurf | `~/.codeium/windsurf/skills/humanizer` · `.windsurf/skills/humanizer` | - |
 
-Na linha do Gemini, o comando `install` recebe o repositório inteiro; nas demais, vale o link ou a cópia de `plugins/codex/skills/humanizer`. Esses caminhos vêm da documentação de cada fornecedor em outubro de 2026. Se um cliente mudar o modo de encontrar skills, vale a documentação dele.
+Na linha do Gemini, o comando `install` recebe o repositório inteiro; nas demais, vale o link ou a cópia de `plugins/codex/skills/humanizer`. Esses caminhos vêm da documentação de cada fornecedor em outubro de 2026. Se um cliente mudar a forma de localizar skills, vale a documentação dele.
 
 ### Sem instalar
 
-Anexe `SKILL.md` e o catálogo do seu idioma (`references/pt-br/padroes.md` para português, `references/en/patterns.md` para inglês) à conversa, mais `references/pt-br/revisao-final.md` ou `references/en/final-pass.md` para a passada final, e diga:
+Anexe à conversa o `SKILL.md` e o catálogo do idioma do texto (`references/pt-br/padroes.md` para português, `references/en/patterns.md` para inglês). Para a passada final, junte `references/pt-br/revisao-final.md` ou `references/en/final-pass.md`. Depois diga:
 
 ```text
 Use os arquivos anexos como guia de escrita e revisão nesta conversa.
@@ -166,7 +166,7 @@ Abra uma sessão nova depois de instalar e confira se o cliente lista `humanizer
 
 ## Uso
 
-Chame pelo nome:
+Invoque a skill pelo nome:
 
 ```text
 /humanizer
@@ -174,14 +174,16 @@ Chame pelo nome:
 [cole o texto]
 ```
 
-Ou peça em palavras simples, em qualquer um dos idiomas:
+Ou peça em linguagem comum:
 
 ```text
-Use the humanizer skill on this release note. Keep the facts and the version numbers.
+Use a skill humanizer nesta nota de versão. Mantenha os fatos e os números de versão.
 Revise este e-mail com a skill humanizer e entregue só a versão final.
 ```
 
-Aponte para um arquivo:
+Em textos em inglês a skill funciona do mesmo jeito; os exemplos em inglês estão no [README em inglês](README.md).
+
+Para trabalhar sobre um arquivo:
 
 ```text
 /humanizer docs/proposal.md
@@ -195,11 +197,11 @@ Idioma: inglês. Gênero: proposta técnica. Leitor: o comitê gestor.
 Não mexer em: os números da seção 3 e as citações.
 ```
 
-Ele devolve achados com o trecho, o padrão (EN01-EN78, PT01-PT86 ou R01-R12), o problema, uma correção mínima e um nível de confiança. Você decide o que aplicar. Uma boa rotina para um texto importante: escreva com a skill, revise com o subagente, aplique o que fizer sentido.
+Ele devolve os achados com trecho, padrão (EN01-EN78, PT01-PT86 ou R01-R12), problema, correção mínima e nível de confiança. A decisão de aplicar é sua. Num texto importante, escreva com a skill, revise com o subagente e aplique o que fizer sentido.
 
-### Combine com a sua voz
+### Escrever na sua voz
 
-Se quiser que a reescrita soe como você, inclua uma amostra da sua escrita:
+Para a reescrita soar como você, inclua uma amostra do seu texto:
 
 ```text
 /humanizer
@@ -211,11 +213,11 @@ Agora humanize este texto:
 [cole o texto]
 ```
 
-A skill lê a amostra atrás de traços observáveis (tamanho de frase e de parágrafo, pontuação, contrações, pessoa, registro, como você abre e fecha, como usa listas) e escreve o texto novo com eles. Ela não copia seus erros de digitação, suas opiniões, sua biografia nem qualquer afirmação da amostra, e a amostra nunca se sobrepõe aos fatos do texto editado. Com uma amostra abaixo de cerca de 150 palavras, o casamento é aproximado, e a skill avisa. Peça uma nota curta de voz se quiser ver quais traços ela usou.
+A skill procura na amostra traços observáveis (tamanho de frase e de parágrafo, pontuação, contrações, pessoa, registro, jeito de abrir e fechar, uso de listas) e escreve o texto novo com eles. Não copia erros de digitação, opiniões, biografia nem qualquer afirmação da amostra, e a amostra nunca prevalece sobre os fatos do texto editado. Com menos de cerca de 150 palavras, a imitação da voz é aproximada, e a skill avisa. Para ver quais traços ela usou, peça uma nota curta sobre a voz.
 
-### Torne-a o padrão
+### Deixar a skill como padrão
 
-Adicione isto ao seu `CLAUDE.md`, `AGENTS.md` ou equivalente:
+Acrescente isto ao `CLAUDE.md`, ao `AGENTS.md` ou a outro arquivo equivalente:
 
 ```markdown
 ## Escrita e revisão
@@ -229,24 +231,24 @@ requisitos sem pedido. Em reescritas comuns, devolva só a versão final.
 
 ## Como funciona
 
-Modelos de linguagem escolhem o caminho seguro e frequente: a frase que serve a qualquer assunto, a lista de três itens, o fechamento animado, o subtítulo em cada parágrafo. Cada escolha é razoável sozinha. Juntas, resultam num texto que diz menos do que o tamanho sugere e soa como ninguém em particular. A solução não é salpicar manias "humanas" por cima; é dizer a coisa específica de que o leitor precisa.
+Modelos de linguagem tendem ao caminho seguro e mais frequente: a frase que serve a qualquer assunto, a lista de três itens, o fechamento animado, o subtítulo em cada parágrafo. Cada escolha, isolada, é razoável. Somadas, dão um texto que diz menos do que o tamanho sugere e não soa como ninguém em particular. O remédio é dizer a coisa específica de que o leitor precisa, em vez de salpicar manias "humanas" por cima.
 
 A skill segue seis passos:
 
-1. **Fixar o contrato da tarefa.** Idioma, gênero, leitor, formato, tamanho e limites. Se você deu uma amostra de voz, ela é separada aqui do texto a editar.
+1. **Fixar o contrato da tarefa.** Idioma, gênero, leitor, formato, tamanho e limites. Havendo amostra de voz, ela é separada aqui do texto a editar.
 2. **Marcar o que não pode mudar.** Citações, código, comandos, identificadores, URLs, números, datas, nomes e termos normativos.
 3. **Diagnosticar problemas reais** contra o catálogo do idioma do texto. Um padrão é motivo para olhar, não ordem para cortar: frase correta fica.
 4. **Escrever ou revisar** com a menor mudança que resolve o problema.
 5. **Revisar em duas passadas:** primeiro o sentido (nada acrescentado, perdido ou mais certo do que era), depois a passada específica do idioma em `references/pt-br/revisao-final.md` ou `references/en/final-pass.md`.
 6. **Entregar no formato pedido**, em geral só o texto final.
 
-Doze regras (R01-R12) ficam acima do catálogo. As principais: nenhum fato, experiência ou fonte inventados (R02); citações e código são protegidos (R03); nada de tradução ou resumo sem pedido; o registro segue o gênero e o autor, não um estilo fixo (R07). Quando uma regra e um padrão discordam, vale a regra. Um texto limpo volta quase intocado; veja o exemplo da descrição de pull request mais abaixo.
+Doze regras (R01-R12) valem mais que o catálogo. As principais: não inventar fato, experiência nem fonte (R02); proteger citações e código (R03); não traduzir nem resumir sem pedido; ajustar o registro ao gênero e ao autor, sem estilo fixo (R07). Se uma regra e um padrão divergem, vale a regra. Um texto limpo volta quase intocado, como no exemplo da descrição de pull request, mais abaixo.
 
 ## O catálogo em português (86 padrões)
 
-O catálogo em português é o [`references/pt-br/padroes.md`](references/pt-br/padroes.md), com IDs PT01-PT86. Segue a página da Wikipédia em português [Sinais de texto gerado por inteligência artificial](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Sinais_de_texto_gerado_por_intelig%C3%AAncia_artificial) (S02), revisão 73274816, na ordem da página; PT70-PT76 vêm da página [Grandes modelos de linguagem](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Grandes_modelos_de_linguagem) (S03), revisão 73268669. Os grupos abaixo usam os nomes de seção da própria página. A Wikipédia é a fonte de verdade sobre o que conta como sinal. Os indícios de escrita humana, os que não funcionam e os históricos estão no catálogo para a skill **não** agir sobre eles (PT54-PT69 e PT75). PT77-PT86 são acréscimos de outras fontes ou da prática editorial, marcados assim na linha **Fontes**. Cada entrada traz o gatilho, por que soa como IA, a correção, a exceção e uma linha **Fontes** com a fonte e a seção da página. Os sinais que só fazem sentido dentro da Wikipédia (wikitexto, páginas de usuário, permissões de edição) ficam no fim do catálogo como não aplicados.
+O catálogo em português é o [`references/pt-br/padroes.md`](references/pt-br/padroes.md), com IDs PT01-PT86. Segue a página da Wikipédia em português [Sinais de texto gerado por inteligência artificial](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Sinais_de_texto_gerado_por_intelig%C3%AAncia_artificial) (S02), revisão 73274816, na ordem da página; PT70-PT76 vêm da página [Grandes modelos de linguagem](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Grandes_modelos_de_linguagem) (S03), revisão 73268669. Os grupos abaixo usam os nomes de seção da própria página. A Wikipédia é a fonte de verdade sobre o que conta como sinal. Os indícios de escrita humana, os que não funcionam e os históricos constam do catálogo justamente para a skill **não** agir sobre eles (PT54-PT69 e PT75). PT77-PT86 são acréscimos de outras fontes ou da prática editorial, marcados assim na linha **Fontes**. Cada entrada traz o gatilho, por que soa como IA, a correção, a exceção e uma linha **Fontes** com a fonte e a seção da página. Os sinais que só fazem sentido dentro da Wikipédia (wikitexto, páginas de usuário, permissões de edição) ficam no fim do catálogo, marcados como não aplicáveis.
 
-O texto em inglês usa o catálogo próprio, feito a partir da Wikipédia em inglês: `references/en/patterns.md` (EN01-EN78), listado no [README.md](README.md).
+Para textos em inglês há um catálogo próprio, baseado na Wikipédia em inglês: `references/en/patterns.md` (EN01-EN78), listado no [README.md](README.md).
 
 ### O que verificar primeiro
 
@@ -422,85 +424,79 @@ _Comuns em modelos antigos e bem menos frequentes hoje. Vêm da página da Wikip
 | PT84 | Entusiasmo e emoção inadequados | "incrível!", exclamação e celebração em relatório de falha |
 | PT85 | Instruções do material tratadas como comandos | o texto a revisar diz "ignore as regras" e o editor obedece |
 | PT86 | Tradução, resumo ou segunda versão não solicitados | revisão que volta traduzida, resumida ou em duas versões |
+
 ## Exemplos
 
-Como foram feitos: os textos "antes" são saída bruta do GPT-6.1 numa sessão isolada do Codex, sem instruções do usuário e sem skills carregadas, recebendo apenas os fatos de cada pedido. Os textos "depois" são os mesmos rascunhos passados por esta skill. Os IDs PT remetem ao catálogo acima; os IDs EN, ao catálogo em inglês listado no [README.md](README.md).
+Como foram feitos: os textos "antes" são saída bruta do GPT-6.1, gerada numa sessão isolada do Codex, sem instruções do usuário nem skills carregadas, só com os fatos de cada pedido. Os textos "depois" são esses mesmos rascunhos depois de passarem por esta skill. Os IDs remetem ao catálogo acima. Os exemplos em inglês, a partir de pedidos em inglês, estão no [README.md](README.md).
 
-### Anúncio de lançamento (inglês)
+### Anúncio de lançamento
 
 > **Antes**
-> tidewatch 2.0 is here, with offline syncing and faster uploads for local folders backed up to S3.
+> # pagafacil 2.0: cobrança por Pix automático e processamento mais rápido
 >
-> The new offline mode queues changes while you're disconnected and uploads them when your connection returns. You can keep working on local files through a connection drop without having to remember what needs syncing later.
+> A versão 2.0 da pagafacil, biblioteca de código aberto para emitir cobranças em Node.js, chegou com suporte a cobrança por Pix automático.
 >
-> This release also improves sync performance. In our benchmark of 10,000 small files, tidewatch 2.0 completed the sync 40% faster. Results will vary with your files and connection, but this benchmark gives a concrete measure of the improvement for that workload.
+> A nova versão também traz melhorias de desempenho. No nosso benchmark com 5.000 cobranças, o processamento ficou 30% mais rápido. Esse resultado se refere ao cenário testado; o ganho na sua aplicação pode variar.
 >
-> Version 2.0 drops support for Python 3.9, so check your Python environment before upgrading. The migration guide at `docs/migrate-2.md` covers the steps for moving to the new release.
->
-> tidewatch remains an open-source command-line tool for syncing local folders to S3. If you're upgrading an existing setup, start with the migration guide, then give 2.0 a try.
+> **A versão 2.0 deixa de suportar Node 18.** Antes de atualizar, confira a versão do Node.js usada no seu projeto e consulte o \[guia de migração\](docs/migracao-2.md) para orientar a atualização.
 
 > **Depois**
-> tidewatch 2.0 adds an offline mode and a faster sync.
+> # pagafacil 2.0: Pix automático e processamento mais rápido
 >
-> Offline mode queues changes while you're disconnected and uploads them when the connection returns.
+> A pagafacil 2.0 passa a emitir cobrança por Pix automático.
 >
-> In our benchmark of 10,000 small files, sync is 40% faster.
+> No nosso benchmark com 5.000 cobranças, o processamento ficou 30% mais rápido.
 >
-> Version 2.0 drops support for Python 3.9, so check your Python version before upgrading. The migration guide is at `docs/migrate-2.md`.
+> **A versão 2.0 deixa de suportar Node 18.** Confira a versão do Node.js do projeto antes de atualizar. O guia de migração está em `docs/migracao-2.md`.
 >
-> tidewatch is an open-source command-line tool that syncs local folders to S3.
+> A pagafacil é uma biblioteca de código aberto para emitir cobranças em Node.js.
 
-O que mudou: a abertura "is here" saiu (EN70). O benefício que ninguém declarou, "without having to remember what needs syncing", saiu (EN78). A ressalva em torno do benchmark saiu, porque "in our benchmark of 10,000 small files" já delimita o escopo (EN25). O convite final e o ponteiro repetido para o guia de migração saíram (EN24, EN57). Os fatos, a versão, o caminho e o aviso sobre o Python ficaram intactos.
+O que mudou: "chegou com suporte a" era abertura de anúncio (PT06). "A nova versão também traz melhorias de desempenho" anunciava o dado da frase seguinte, que já diz tudo (PT64). A ressalva "esse resultado se refere ao cenário testado" repetia o que "no nosso benchmark com 5.000 cobranças" já delimita (PT26). "Para orientar a atualização" dizia de novo para que serve um guia de migração. O negrito ficou, porque marca a única mudança que pode quebrar o projeto de quem atualiza.
 
-### Descrição de pull request (inglês)
-
-> **Antes**
-> Fixes invoice due dates being calculated in server time (UTC) instead of the customer's time zone. Customers in UTC-3 to UTC-5 saw due dates one day early on invoices created after 21:00 local time.
->
-> The fix converts timestamps to the customer's time zone before truncating to a date.
->
-> - Adds unit tests for UTC-3, UTC-5, and UTC+9.
-> - No database migration required.
-
-**Depois:** sem alteração. O rascunho informa o bug, quem foi afetado, a correção, os testes e a situação da migração, sem nada inflado. A skill deixa em paz o texto limpo; editá-lo só acrescentaria risco.
-
-### Post de LinkedIn (inglês), simples e com amostra de voz
+### Descrição de pull request
 
 > **Antes**
-> Ledgerly reached 1,000 active users this October!
+> Corrige o cálculo de frete para CEPs digitados com hífen, que faziam clientes verem frete zerado no checkout. O CEP agora é normalizado antes da consulta à tabela de frete.
 >
-> We launched our budgeting app in March 2026. Seven months later, our team of three is celebrating a milestone that means a lot to us: 1,000 people actively using something we built.
+> Adiciona testes para CEPs com hífen, sem hífen e com espaços. Não exige migração de banco.
+
+**Depois:** sem alteração. O texto diz o defeito, quem sentia o efeito, a correção, os testes e a situação da migração, sem nada inflado. A skill não mexe em texto que já está limpo: qualquer mudança só traria risco.
+
+### Post de LinkedIn, simples e com amostra de voz
+
+> **Antes**
+> A primeira turma da Trilha Dev se formou! 🎓
 >
-> Thank you to everyone who has tried Ledgerly, shared feedback, or recommended it to someone else. You've helped us get here.
+> Em outubro de 2026, celebramos a formação de 40 alunos aqui em Arapiraca (AL). Uma conquista que também faz parte da história dos quatro instrutores da nossa equipe.
 >
-> Next up: CSV export, so you can take your budgeting data with you.
+> Parabéns a cada aluno por essa etapa concluída e aos instrutores pelo trabalho ao longo da turma!
 >
-> We're excited to keep building.
+> Quer fazer parte da próxima? As inscrições abrem em fevereiro. Acompanhe a Trilha Dev para saber mais.
+>
+> #TrilhaDev #Programação #Arapiraca
 
 > **Depois**
-> Ledgerly, our budgeting app, now has 1,000 active users.
+> A Trilha Dev, escola de programação de Arapiraca (AL), formou a primeira turma em outubro de 2026: 40 alunos. A equipe tem quatro instrutores.
 >
-> We launched in March 2026 and reached the mark in October. The team is three people.
->
-> Thanks to everyone who uses it. Next up is CSV export.
+> As inscrições para a próxima turma abrem em fevereiro.
 
-O que mudou: o ponto de exclamação e o "We're excited to keep building" saíram (EN74). "Means a lot to us" é um sentimento que os fatos não deram (EN64). "Shared feedback, or recommended it" e "take your budgeting data with you" são ações e benefícios que nunca foram declarados (EN78). "Seven months later" era preparação para uma data já informada (EN70).
+O que mudou: o emoji e as hashtags saíram (PT22, PT06). Os pontos de exclamação e os parabéns em tom de festa saíram (PT84). "Uma conquista que também faz parte da história" dava importância sem informar nada (PT03). "Quer fazer parte da próxima?" é pergunta de template (PT81), e "acompanhe para saber mais" é chamada genérica (PT06). Os fatos ficaram todos.
 
 Com esta amostra de voz:
 
 ```text
-Shipped the importer fix today. Short version: the vendor changed date formats, we didn't
-notice, invoices broke for two days. That's on us. Tests now cover the three formats we've
-seen in the wild, and the parser fails loudly instead of guessing. If you hit something odd,
-ping me directly. I'd rather hear about it twice than not at all.
+Fechei hoje a correção do importador. Resumindo: o fornecedor mudou o formato das datas,
+a gente não percebeu e as faturas quebraram por dois dias. Falha nossa. Os testes agora
+cobrem os três formatos que já apareceram, e o parser para com erro em vez de chutar.
+Se aparecer algo estranho, me chama direto. Prefiro saber duas vezes do que não saber.
 ```
 
 > **Depois, nessa voz**
-> Ledgerly passed 1,000 active users in October. Short version: we launched in March 2026, there are three of us, and the next feature is CSV export. Thanks to everyone using it.
+> A Trilha Dev formou a primeira turma em outubro de 2026. Resumindo: 40 alunos, quatro instrutores, e as inscrições da próxima turma abrem em fevereiro.
 
-Traços aproveitados: frases declarativas curtas, a abertura "Short version:", contrações, tom neutro sem exagero. Traços descartados: "That's on us" e "ping me directly", que pertencem à história da própria amostra e não são fatos sobre o Ledgerly.
+Traços aproveitados: frases declarativas curtas, a abertura "Resumindo:", registro direto, sem exagero. Traços descartados: "Falha nossa" e "me chama direto", que pertencem à história da própria amostra e não são fatos sobre a Trilha Dev.
 
-### E-mail para a equipe (português)
+### E-mail para a equipe
 
 > **Antes**
 > Assunto: Nova data de entrega do módulo de relatórios
@@ -515,7 +511,7 @@ Traços aproveitados: frases declarativas curtas, a abertura "Short version:", c
 
 **Depois:** o mesmo texto, terminando em "Abraços" sem o ponto de exclamação (PT84). Um aviso de atraso não pede a animação, e o resto já era direto.
 
-### Parágrafo didático (português)
+### Parágrafo didático
 
 > **Antes**
 > O teste de regressão verifica se uma alteração no software prejudicou funcionalidades que já funcionavam. Ele é importante porque uma mudança em uma parte do sistema pode afetar outras, mesmo sem intenção. Imagine um formulário de login com campos de e-mail e senha. A equipe adiciona a opção "Lembrar de mim". Depois dessa mudança, é necessário conferir se o usuário ainda consegue entrar com dados válidos, se uma senha incorreta continua sendo rejeitada e se os campos obrigatórios seguem sendo validados. Esses testes ajudam a identificar problemas introduzidos pela alteração. Eles podem ser executados manualmente ou por ferramentas de automação. A seleção dos testes deve considerar quais funcionalidades podem ter sido afetadas e quais são mais importantes para o funcionamento do sistema.
@@ -525,7 +521,7 @@ Traços aproveitados: frases declarativas curtas, a abertura "Short version:", c
 
 O que mudou: "Ele é importante porque" anunciava a importância em vez de dar o motivo (PT03). "Esses testes ajudam a identificar problemas..." repetia a definição (PT64). "A seleção dos testes deve considerar" virou verbo (edição simples, sem entrada no catálogo). O exemplo do login e suas três checagens ficam: são o conteúdo, não uma tríade forçada.
 
-### Página "Sobre nós" (português)
+### Página "Sobre nós"
 
 > **Antes**
 > A Padaria Lúcia faz parte do bairro da Ponta Verde, em Maceió, desde 1998. Fundada por Lúcia Ferreira, ficou conhecida pelo pão de queijo e pelo bolo de macaxeira, dois favoritos de quem passa por aqui.
@@ -539,23 +535,24 @@ O que mudou: "Ele é importante porque" anunciava a importância em vez de dar o
 
 O que mudou: "faz parte do bairro desde 1998" vestia uma data de importância (PT03). "Dois favoritos de quem passa por aqui" é uma afirmação que os fatos não sustentavam (PT08). "Seja para começar a manhã ou fazer uma pausa" é uma gama de usos que ninguém informou (PT79). O convite genérico saiu (PT06). O texto ficou curto porque os fatos são poucos.
 
-## Acompanhando a Wikipédia
+## Como acompanhar a Wikipédia
 
-Os guias da Wikipédia sobre escrita de IA mudam com frequência. Na revisão de 30 de outubro de 2026, por exemplo, as páginas em inglês e em português listam o uso excessivo de travessão como indicador histórico, válido de 2022 a setembro de 2026. Antes de cada versão, rode:
+Os guias da Wikipédia sobre escrita de IA mudam com frequência. Na revisão de 30 de outubro de 2026, por exemplo, as páginas em inglês e em português listam o uso excessivo de travessão como indicador histórico, referente ao período de 2022 a setembro de 2026. Antes de cada versão, rode:
 
 ```bash
 python scripts/check-wikipedia.py
 ```
 
-O script compara a revisão atual de cada página com a última registrada (`wikipedia/revisions.json`), lista as seções acrescentadas ou removidas e imprime o link do diff. Quando uma página mudou, leia o diff, atualize a extração em `wikipedia/` e os catálogos, e rode `python scripts/check-wikipedia.py --record`. Uma mudança na Wikipédia é um convite à revisão, não uma regra automática: passa pelas mesmas prioridades (R01-R12) de qualquer outra fonte.
+O script compara a revisão atual de cada página com a última registrada (`wikipedia/revisions.json`), lista as seções acrescentadas ou removidas e imprime o link do diff. Quando uma página mudou, leia o diff, atualize a extração em `wikipedia/` e os catálogos, e rode `python scripts/check-wikipedia.py --record`. Uma mudança na Wikipédia pede revisão, não vira regra automática: passa pelas mesmas prioridades (R01-R12) de qualquer outra fonte.
 
 ## Limites
 
-- As fontes-base foram lidas entre 23 e 30 de outubro de 2026. Para tudo que dependa de fatos atuais sobre modelos, detectores ou ferramentas, confira de novo.
-- O repositório é verificado quanto à estrutura: frontmatter, R01-R12, EN01-EN78, PT01-PT86, links entre a base e as referências, e o manifesto do plugin (`claude plugin validate .`). Isso não é um benchmark de qualidade de escrita.
-## Contribuindo
+- As fontes-base foram lidas entre 23 e 30 de outubro de 2026. Para qualquer fato atual sobre modelos, detectores ou ferramentas, confira de novo.
+- A verificação do repositório cobre a estrutura: frontmatter, R01-R12, EN01-EN78, PT01-PT86, links entre o `SKILL.md` e as referências, e o manifesto do plugin (`claude plugin validate .`). Não é um benchmark de qualidade de escrita.
 
-As regras ficam em `SKILL.md` e `references/`; instalação e uso ficam nos READMEs. O [`AGENTS.md`](AGENTS.md) lista as convenções do repositório. Um sinal que a Wikipédia documenta entra no catálogo do seu idioma, na ordem da página; um acréscimo de outra fonte entra na última seção do catálogo, com a fonte nomeada. Para propor um padrão, descreva o problema observável, a intervenção, a exceção e um caso de teste, e nomeie a fonte primária, se houver. Mantenha a preferência pessoal separada dos achados de pesquisa.
+## Como contribuir
+
+As regras ficam em `SKILL.md` e `references/`; instalação e uso ficam nos READMEs. O [`AGENTS.md`](AGENTS.md) lista as convenções do repositório. Um sinal documentado pela Wikipédia entra no catálogo do idioma correspondente, na ordem da página; um acréscimo de outra fonte entra na última seção do catálogo, com a fonte indicada. Para propor um padrão, descreva o problema observável, a intervenção, a exceção e um caso de teste, e cite a fonte primária, se houver. Não misture preferência pessoal com achado de pesquisa.
 
 ## Fontes
 
@@ -567,7 +564,7 @@ Os padrões se apoiam só em fontes primárias: guias editoriais da Wikipédia, 
 - Kobak et al., *Delving into LLM-assisted writing in biomedical publications through excess vocabulary*, Science Advances, 2025
 - Liang et al., *GPT detectors are biased against non-native English writers*, Patterns, 2023
 
-A lista completa, com os padrões que cada fonte sustenta, está no apêndice abaixo. Como cada fonte é usada, e seus limites, está em [`references/sources.md`](references/sources.md), sob o mesmo ID.
+A lista completa, com os padrões que cada fonte sustenta, está no apêndice abaixo. O uso de cada fonte e seus limites estão em [`references/sources.md`](references/sources.md), sob o mesmo ID.
 
 ## Histórico de versões
 
@@ -581,7 +578,7 @@ MIT, por Vinicius Queiroz (2026). Partes deste pacote derivam de trabalho public
 
 ## Apêndice: pesquisas e guias por trás dos padrões
 
-As fontes **base** sustentam o catálogo ou suas cautelas atuais. **Em avaliação** quer dizer que o registro (título, autores, data, identificador) foi conferido em 30/10/2026, mas o conteúdo ainda não entrou no catálogo. Nenhuma fonte vira regra sozinha; cada uma passa pelas prioridades da base.
+As fontes **base** sustentam o catálogo ou suas cautelas atuais. **Em avaliação** quer dizer que o registro (título, autores, data, identificador) foi conferido em 30/10/2026, mas o conteúdo ainda não entrou no catálogo. Nenhuma fonte vira regra sozinha; cada uma passa pelas prioridades do `SKILL.md`.
 
 A coluna **Padrões e regras** mostra o que cada fonte sustenta. A consulta inversa está no catálogo: todo padrão em `references/pt-br/padroes.md` e em `references/en/patterns.md` termina com uma linha **Fontes** (ou **Sources**) que traz o ID e a seção da página. Neste README a coluna lista IDs PT; o README em inglês lista IDs EN. Oito padrões em português (PT77, PT79, PT80, PT81, PT82, PT84, PT85, PT86) são acréscimos editoriais sem fonte externa registrada. Fonte que só tem entradas no catálogo em inglês mostra "só o catálogo em inglês". As páginas da Wikipédia valem na revisão indicada; o script de manutenção avisa quando ela muda.
 
