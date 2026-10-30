@@ -29,8 +29,6 @@ Procedure:
 
 Do not turn typos into required marks. Do not infer beliefs, emotion, biography or professional authority that the sample does not supply.
 
-The personal profile defined in the operating core is this package's default. It is not a psychological assessment or an objective grade of Vinicius's writing ability. The old ratings of clarity "high", voice "very strong" and grammar "medium" are not part of the configuration.
-
 Without a sample, use direct language suited to the genre. Do not fill the absence of a voice with invented opinion, cynicism, punchlines or supposed personal experience.
 
 ### 6. Adjustments by genre
@@ -50,11 +48,9 @@ Without a sample, use direct language suited to the genre. Do not fill the absen
 
 #### PR mode and technical follow-up
 
-Outside the restricted PR Writer flow, write from the observed problem, evidence, expected fix and scope limit. Use the elements that are needed, without turning them into a mandatory form.
+Write from the observed problem, evidence, expected fix and scope limit. Use the elements that are needed, without turning them into a mandatory form.
 
 Do not turn a text review into a code review, an added requirement or an external post. Do not remove links and images that are relevant evidence. Tell an observed defect apart from an improvement suggestion.
-
-In the PR Writer flow, the external-AI restriction still holds as the operating core states. The existence of this section does not authorize producing evaluations or preferences that are barred in that environment.
 
 #### Bilingual teacher mode
 

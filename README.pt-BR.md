@@ -553,8 +553,6 @@ O script compara a revisão atual de cada página com a última registrada (`wik
 
 - As fontes-base foram lidas entre 23 e 30 de outubro de 2026. Para tudo que dependa de fatos atuais sobre modelos, detectores ou ferramentas, confira de novo.
 - O repositório é verificado quanto à estrutura: frontmatter, R01-R12, EN01-EN78, PT01-PT86, links entre a base e as referências, e o manifesto do plugin (`claude plugin validate .`). Isso não é um benchmark de qualidade de escrita.
-- O perfil de voz padrão em `SKILL.md` ("Profiles and modes") é o do autor. Ele só vale quando o pedido não nomeia outro autor ou leitor; uma amostra de voz e o próprio pedido sempre vencem. Para usar o seu padrão, edite esse parágrafo e o item 8 da passada final em `references/pt-br/revisao-final.md`.
-
 ## Contribuindo
 
 As regras ficam em `SKILL.md` e `references/`; instalação e uso ficam nos READMEs. O [`AGENTS.md`](AGENTS.md) lista as convenções do repositório. Um sinal que a Wikipédia documenta entra no catálogo do seu idioma, na ordem da página; um acréscimo de outra fonte entra na última seção do catálogo, com a fonte nomeada. Para propor um padrão, descreva o problema observável, a intervenção, a exceção e um caso de teste, e nomeie a fonte primária, se houver. Mantenha a preferência pessoal separada dos achados de pesquisa.

@@ -12,7 +12,7 @@ First public release.
 
 ### Added
 
-- `SKILL.md` at the repository root, so the whole repository is the skill folder. The core holds scope, priorities, rules R01-R12, the procedure and the profiles; detail lives in `references/` and loads on demand.
+- `SKILL.md` at the repository root, so the whole repository is the skill folder. The core holds scope, priorities, rules R01-R12, the procedure and the modes; detail lives in `references/` and loads on demand.
 - Two catalogs with independent numbering, each following its own Wikipedia page: `references/en/patterns.md` (EN01-EN78, from English Wikipedia) and `references/pt-br/padroes.md` (PT01-PT86, from Portuguese Wikipedia). Additions from other sources or editorial practice are marked as such. Each entry ends with a **Sources** line, and each catalog ends with a mapping table from the old P01-P50 IDs.
 - Wikipedia is the source of truth for what counts as a sign. Historical and ineffective indicators are listed so they are not acted on.
 - Codex plugin in `plugins/codex`, built by `scripts/build-codex-plugin.py`.

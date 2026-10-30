@@ -12,8 +12,6 @@ Reveja "vale ressaltar", "cabe destacar", "é fundamental compreender", "nesse s
 
 Reveja "em suma", "em conclusão", "para concluir", "como vimos", "a chave para o sucesso", "o futuro é promissor", "espero que ajude" e "fico à disposição" quando apenas prolongarem a resposta. Um fecho de e-mail adequado ao relacionamento não é automaticamente um vício.
 
-No perfil pessoal padrão, não inicie parágrafos novos com "Além disso", "Portanto", "Contudo" ou "Em um mundo onde". Essa preferência não altera uma citação nem impede analisar essas expressões.
-
 #### Verbos e substantivos
 
 | Rever quando ornamentais | Escolha conforme o sentido |
@@ -51,6 +49,6 @@ Faça uma única auditoria linguística depois da revisão editorial, sem copiar
 5. **Regência e relativos:** preserve preposições necessárias. "O assunto de que precisamos tratar" e "o assunto do qual precisamos tratar" podem cumprir a mesma função; não imponha "do qual" em toda oração relativa.
 6. **Pontuação:** respeite relações sintáticas, vocativos e enumerações. Não use apenas a pausa de leitura como critério e não separe sujeito e verbo sem razão sintática.
 7. **Referência:** confira a quem se referem "ele", "ela", "isso", "esse" e sujeitos omitidos. Evite clareza aparente com antecedente ambíguo.
-8. **Termos, nomes e títulos:** mantenha siglas e nomes conforme fornecidos. Use "Vinicius Queiroz" e "no EDGE" no contexto deste perfil; não altere um nome próprio por uma regra geral de acentuação.
+8. **Termos, nomes e títulos:** mantenha siglas e nomes conforme fornecidos. Não altere um nome próprio por uma regra geral de acentuação.
 9. **Espaçamento e apresentação:** retire espaços indevidos, uniformize listas e confira o formato de destino. Títulos, rótulos e campos não precisam receber ponto final automaticamente.
 10. **Codificação e valores:** salve prosa em UTF-8 e confira acentos após exportar. Preserve identificadores e trechos protegidos. Ao localizar números, datas ou unidades, mantenha o valor e não adivinhe convenção ambígua.

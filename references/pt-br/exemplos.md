@@ -26,7 +26,7 @@ Não troque por "Contratamos a equipe": a frase original descreve a condição q
 
 **Texto:** "O parser já aceita `--dry-run`, mas os testes de CLI não cobrem a opção. Acrescente os casos correspondentes sem alterar o comportamento implementado."
 
-Não afirme que a suíte falhou nem amplie o pedido para refatorar o parser. Este cenário não é o fluxo restrito do PR Writer.
+Não afirme que a suíte falhou nem amplie o pedido para refatorar o parser.
 
 #### Avaliação sem extrapolação
 

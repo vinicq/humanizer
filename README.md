@@ -530,8 +530,6 @@ The script compares each page's current revision with the last recorded one (`wi
 
 - The core sources were read between October 23 and 30, 2026. For anything that depends on current facts about models, detectors or tools, check again.
 - The repository is checked for structure: frontmatter, R01-R12, EN01-EN78, PT01-PT86, links between the core and the references, and the plugin manifest (`claude plugin validate .`). That is not a benchmark of writing quality.
-- The default voice profile in `SKILL.md` ("Profiles and modes") is the author's. It applies only when the request names no other author or reader; a voice sample and the request itself always win. To use your own default, edit that paragraph and item 8 of the final pass in `references/pt-br/revisao-final.md`.
-
 ## Contributing
 
 Rules live in `SKILL.md` and `references/`; installation and usage live in the READMEs. [`AGENTS.md`](AGENTS.md) lists the repository conventions. A sign that Wikipedia documents goes into the catalog of its language, in the page's order; an addition from another source goes in the last section of that catalog with the source named. To propose a pattern, describe the observable problem, the intervention, the exception and a test case, and name the primary source if there is one. Keep personal preference apart from research findings.
