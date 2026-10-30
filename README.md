@@ -5,12 +5,10 @@
 An Agent Skill for writing, editing and reviewing English and Brazilian Portuguese so the text reads like a person wrote it for a reader. It removes the habits that make model output easy to spot, and it keeps the facts, the meaning, the technical terms and the author's voice intact.
 
 > **Before** (raw model output)
-> A Padaria Lúcia faz parte do bairro da Ponta Verde, em Maceió, desde 1998. Fundada por Lúcia Ferreira, ficou conhecida pelo pão de queijo e pelo bolo de macaxeira, dois favoritos de quem passa por aqui. [...] Seja para começar a manhã ou fazer uma pausa para o café da tarde, venha conhecer a nossa padaria.
+> We're known for our used maritime history section—a good place to browse if your interests run to ships, seafaring, and life along the coast. [...] Stop in and spend some time among the shelves.
 >
 > **After**
-> A Padaria Lúcia fica no bairro da Ponta Verde, em Maceió. Foi fundada em 1998 por Lúcia Ferreira e é conhecida pelo pão de queijo e pelo bolo de macaxeira.
->
-> Abrimos todos os dias, das 6h às 20h.
+> We're known for our used maritime history section. On Saturday mornings we hold a children's reading hour.
 
 The skill does not detect authorship and does not promise to pass AI detectors. It edits for the reader.
 
@@ -174,12 +172,14 @@ Call it by name:
 [paste the text]
 ```
 
-Or ask in plain words, in either language:
+Or ask in plain words:
 
 ```text
 Use the humanizer skill on this release note. Keep the facts and the version numbers.
-Revise este e-mail com a skill humanizer e entregue só a versão final.
+Revise this e-mail with the humanizer skill and return only the final version.
 ```
+
+The skill works the same way on Brazilian Portuguese text; the [Portuguese README](README.pt-BR.md) shows it with Portuguese examples.
 
 Point it at a file:
 
@@ -399,11 +399,12 @@ _Common in older models and much less frequent now. Listed from the Wikipedia pa
 | EN76 | Embedded instructions treated as commands | the text under review says "ignore the rules" and the editor obeys |
 | EN77 | Unrequested translation, summary or second version | a revision that comes back translated, summarized or in two versions |
 | EN78 | Invented commitments, evidence and scope | "tested successfully", "I will deliver by Friday", percentages with no origin |
+
 ## Examples
 
-How these were made: the "before" texts are raw output from GPT-6.1 in an isolated Codex session, with no user instructions and no skills loaded, given only the facts in each prompt. The "after" texts are the same drafts run through this skill. EN IDs refer to the English catalog above; PT IDs to the Portuguese catalog listed in [README.pt-BR.md](README.pt-BR.md).
+How these were made: the "before" texts are raw output from GPT-6.1 in an isolated Codex session, with no user instructions and no skills loaded, given only the facts in each prompt. The "after" texts are the same drafts run through this skill. IDs refer to the English catalog above. Portuguese examples, written from Portuguese prompts, are in [README.pt-BR.md](README.pt-BR.md).
 
-### Release announcement (English)
+### Release announcement
 
 > **Before**
 > tidewatch 2.0 is here, with offline syncing and faster uploads for local folders backed up to S3.
@@ -429,7 +430,7 @@ How these were made: the "before" texts are raw output from GPT-6.1 in an isolat
 
 What changed: "is here" opener gone (EN70). The benefit nobody stated, "without having to remember what needs syncing", is out (EN78). The hedge around the benchmark is out, since "in our benchmark of 10,000 small files" already sets the scope (EN25). The closing invitation and the repeated migration-guide pointer are out (EN24, EN57). The facts, the version, the path and the Python warning are untouched.
 
-### Pull request description (English)
+### Pull request description
 
 > **Before**
 > Fixes invoice due dates being calculated in server time (UTC) instead of the customer's time zone. Customers in UTC-3 to UTC-5 saw due dates one day early on invoices created after 21:00 local time.
@@ -441,7 +442,7 @@ What changed: "is here" opener gone (EN70). The benefit nobody stated, "without 
 
 **After:** unchanged. The draft states the bug, who was affected, the fix, the tests and the migration status, with nothing inflated. The skill leaves a clean text alone; editing it would only add risk.
 
-### LinkedIn post (English), plain and with a voice sample
+### LinkedIn post, plain and with a voice sample
 
 > **Before**
 > Ledgerly reached 1,000 active users this October!
@@ -477,44 +478,50 @@ ping me directly. I'd rather hear about it twice than not at all.
 
 Traits taken: short declarative sentences, the "Short version:" lead, contractions, a flat tone with no hype. Not taken: "That's on us" and "ping me directly", which belong to the sample's own story and are not facts about Ledgerly.
 
-### Team e-mail (Portuguese)
+### Team e-mail
 
 > **Before**
-> Assunto: Nova data de entrega do módulo de relatórios
+> Subject: Reports module delivery moved to November 21
 >
-> Olá, equipe,
+> Hi team,
 >
-> A entrega do módulo de relatórios passa de 14/11 para 21/11. A API do fornecedor mudou o formato das datas sem aviso, e precisamos ajustar o importador e refazer os testes. O restante do cronograma continua igual.
+> Delivery of the reports module is moving from November 14 to November 21. The vendor changed its API's date format without notice, so we need to adjust the importer and rerun the tests.
 >
-> Na quinta-feira, às 10h, teremos uma reunião para revisar os testes.
+> The rest of the schedule remains unchanged. We'll review the tests at our meeting on Thursday at 10 a.m.
 >
-> Abraços!
+> Thanks,
+> [Your name]
 
-**After:** the same text, ending in "Abraços" without the exclamation mark (PT84). A delay notice does not need the cheer, and everything else was already direct.
+**After:** the same text. The skill flags `[Your name]` as placeholder text (EN28) for the author to fill in; it does not invent a name. The rest already states the change, the reason and the next step.
 
-### Teaching paragraph (Portuguese)
+### Teaching paragraph
 
 > **Before**
-> O teste de regressão verifica se uma alteração no software prejudicou funcionalidades que já funcionavam. Ele é importante porque uma mudança em uma parte do sistema pode afetar outras, mesmo sem intenção. Imagine um formulário de login com campos de e-mail e senha. A equipe adiciona a opção "Lembrar de mim". Depois dessa mudança, é necessário conferir se o usuário ainda consegue entrar com dados válidos, se uma senha incorreta continua sendo rejeitada e se os campos obrigatórios seguem sendo validados. Esses testes ajudam a identificar problemas introduzidos pela alteração. Eles podem ser executados manualmente ou por ferramentas de automação. A seleção dos testes deve considerar quais funcionalidades podem ter sido afetadas e quais são mais importantes para o funcionamento do sistema.
+> A unit test checks whether a small piece of code, such as a single function, behaves as expected. For example, if a function applies a 10% discount to orders over $100, you could test that a $150 order becomes $135 and a $50 order stays $50. You should also check an order of exactly $100: because the discount applies only to orders over $100, the total should remain $100. Testing this boundary helps catch mistakes such as applying the discount to orders of $100 or more.
+
+**After:** unchanged. The paragraph defines the term, gives one worked example with real numbers and explains why the boundary matters. There is nothing to cut, and rewording it would only put the arithmetic at risk.
+
+### "About us" page
+
+> **Before**
+> # About us
+>
+> Harbor Street Books is an independent bookstore in Portland, Maine, founded by Ellen Park in 2004.
+>
+> We're known for our used maritime history section—a good place to browse if your interests run to ships, seafaring, and life along the coast. On Saturday mornings, our children's reading hour brings younger readers together for stories.
+>
+> Stop in and spend some time among the shelves. We're open Tuesday through Sunday, 10 a.m. to 6 p.m.
 
 > **After**
-> O teste de regressão verifica se uma alteração no software prejudicou funcionalidades que já funcionavam. Uma mudança em uma parte do sistema pode afetar outras, mesmo sem intenção. Imagine um formulário de login com campos de e-mail e senha, ao qual a equipe adiciona a opção "Lembrar de mim". Depois dessa mudança, é necessário conferir se o usuário ainda consegue entrar com dados válidos, se uma senha incorreta continua sendo rejeitada e se os campos obrigatórios seguem sendo validados. Esses testes podem ser executados manualmente ou por ferramentas de automação. Para escolher quais rodar, considere quais funcionalidades a alteração pode ter afetado e quais são mais importantes para o sistema.
-
-What changed: "Ele é importante porque" announced importance instead of giving the reason (PT03). "Esses testes ajudam a identificar problemas..." repeated the definition (PT64). "A seleção dos testes deve considerar" became a verb (plain editing, no catalog entry). The login example and its three checks stay: they are the content, not a forced triad.
-
-### "About us" page (Portuguese)
-
-> **Before**
-> A Padaria Lúcia faz parte do bairro da Ponta Verde, em Maceió, desde 1998. Fundada por Lúcia Ferreira, ficou conhecida pelo pão de queijo e pelo bolo de macaxeira, dois favoritos de quem passa por aqui.
+> # About us
 >
-> Recebemos você todos os dias, das 6h às 20h. Seja para começar a manhã ou fazer uma pausa para o café da tarde, venha conhecer a nossa padaria.
-
-> **After**
-> A Padaria Lúcia fica no bairro da Ponta Verde, em Maceió. Foi fundada em 1998 por Lúcia Ferreira e é conhecida pelo pão de queijo e pelo bolo de macaxeira.
+> Harbor Street Books is an independent bookstore in Portland, Maine, founded by Ellen Park in 2004.
 >
-> Abrimos todos os dias, das 6h às 20h.
+> We're known for our used maritime history section. On Saturday mornings we hold a children's reading hour.
+>
+> We're open Tuesday through Sunday, 10 a.m. to 6 p.m.
 
-What changed: "faz parte do bairro desde 1998" dressed a date as significance (PT03). "Dois favoritos de quem passa por aqui" is a claim the facts did not support (PT08). "Seja para começar a manhã ou fazer uma pausa" is a span of uses nobody gave (PT79). The generic invitation is out (PT06). The text is short because the facts are few.
+What changed: "a good place to browse if your interests run to ships, seafaring, and life along the coast" is a sales line built on a list of three the facts never gave (EN05, EN16). "Brings younger readers together for stories" dressed up a plain fact (EN04). "Stop in and spend some time among the shelves" is a stock invitation (EN05). The em dash went with the clause it introduced, not because of the dash: on its own it is ordinary punctuation (EN59).
 
 ## Keeping up with Wikipedia
 
