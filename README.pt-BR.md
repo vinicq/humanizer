@@ -428,7 +428,7 @@ Como foram feitos: os textos "antes" são saída bruta do GPT-6.1 numa sessão i
 
 ### Anúncio de lançamento (inglês)
 
-> **Before**
+> **Antes**
 > tidewatch 2.0 is here, with offline syncing and faster uploads for local folders backed up to S3.
 >
 > The new offline mode queues changes while you're disconnected and uploads them when your connection returns. You can keep working on local files through a connection drop without having to remember what needs syncing later.
@@ -439,7 +439,7 @@ Como foram feitos: os textos "antes" são saída bruta do GPT-6.1 numa sessão i
 >
 > tidewatch remains an open-source command-line tool for syncing local folders to S3. If you're upgrading an existing setup, start with the migration guide, then give 2.0 a try.
 
-> **After**
+> **Depois**
 > tidewatch 2.0 adds an offline mode and a faster sync.
 >
 > Offline mode queues changes while you're disconnected and uploads them when the connection returns.
@@ -454,7 +454,7 @@ O que mudou: a abertura "is here" saiu (EN70). O benefício que ninguém declaro
 
 ### Descrição de pull request (inglês)
 
-> **Before**
+> **Antes**
 > Fixes invoice due dates being calculated in server time (UTC) instead of the customer's time zone. Customers in UTC-3 to UTC-5 saw due dates one day early on invoices created after 21:00 local time.
 >
 > The fix converts timestamps to the customer's time zone before truncating to a date.
@@ -466,7 +466,7 @@ O que mudou: a abertura "is here" saiu (EN70). O benefício que ninguém declaro
 
 ### Post de LinkedIn (inglês), simples e com amostra de voz
 
-> **Before**
+> **Antes**
 > Ledgerly reached 1,000 active users this October!
 >
 > We launched our budgeting app in March 2026. Seven months later, our team of three is celebrating a milestone that means a lot to us: 1,000 people actively using something we built.
@@ -477,7 +477,7 @@ O que mudou: a abertura "is here" saiu (EN70). O benefício que ninguém declaro
 >
 > We're excited to keep building.
 
-> **After**
+> **Depois**
 > Ledgerly, our budgeting app, now has 1,000 active users.
 >
 > We launched in March 2026 and reached the mark in October. The team is three people.
@@ -495,14 +495,14 @@ seen in the wild, and the parser fails loudly instead of guessing. If you hit so
 ping me directly. I'd rather hear about it twice than not at all.
 ```
 
-> **After, in that voice**
+> **Depois, nessa voz**
 > Ledgerly passed 1,000 active users in October. Short version: we launched in March 2026, there are three of us, and the next feature is CSV export. Thanks to everyone using it.
 
 Traços aproveitados: frases declarativas curtas, a abertura "Short version:", contrações, tom neutro sem exagero. Traços descartados: "That's on us" e "ping me directly", que pertencem à história da própria amostra e não são fatos sobre o Ledgerly.
 
 ### E-mail para a equipe (português)
 
-> **Before**
+> **Antes**
 > Assunto: Nova data de entrega do módulo de relatórios
 >
 > Olá, equipe,
@@ -517,22 +517,22 @@ Traços aproveitados: frases declarativas curtas, a abertura "Short version:", c
 
 ### Parágrafo didático (português)
 
-> **Before**
+> **Antes**
 > O teste de regressão verifica se uma alteração no software prejudicou funcionalidades que já funcionavam. Ele é importante porque uma mudança em uma parte do sistema pode afetar outras, mesmo sem intenção. Imagine um formulário de login com campos de e-mail e senha. A equipe adiciona a opção "Lembrar de mim". Depois dessa mudança, é necessário conferir se o usuário ainda consegue entrar com dados válidos, se uma senha incorreta continua sendo rejeitada e se os campos obrigatórios seguem sendo validados. Esses testes ajudam a identificar problemas introduzidos pela alteração. Eles podem ser executados manualmente ou por ferramentas de automação. A seleção dos testes deve considerar quais funcionalidades podem ter sido afetadas e quais são mais importantes para o funcionamento do sistema.
 
-> **After**
+> **Depois**
 > O teste de regressão verifica se uma alteração no software prejudicou funcionalidades que já funcionavam. Uma mudança em uma parte do sistema pode afetar outras, mesmo sem intenção. Imagine um formulário de login com campos de e-mail e senha, ao qual a equipe adiciona a opção "Lembrar de mim". Depois dessa mudança, é necessário conferir se o usuário ainda consegue entrar com dados válidos, se uma senha incorreta continua sendo rejeitada e se os campos obrigatórios seguem sendo validados. Esses testes podem ser executados manualmente ou por ferramentas de automação. Para escolher quais rodar, considere quais funcionalidades a alteração pode ter afetado e quais são mais importantes para o sistema.
 
 O que mudou: "Ele é importante porque" anunciava a importância em vez de dar o motivo (PT03). "Esses testes ajudam a identificar problemas..." repetia a definição (PT64). "A seleção dos testes deve considerar" virou verbo (edição simples, sem entrada no catálogo). O exemplo do login e suas três checagens ficam: são o conteúdo, não uma tríade forçada.
 
 ### Página "Sobre nós" (português)
 
-> **Before**
+> **Antes**
 > A Padaria Lúcia faz parte do bairro da Ponta Verde, em Maceió, desde 1998. Fundada por Lúcia Ferreira, ficou conhecida pelo pão de queijo e pelo bolo de macaxeira, dois favoritos de quem passa por aqui.
 >
 > Recebemos você todos os dias, das 6h às 20h. Seja para começar a manhã ou fazer uma pausa para o café da tarde, venha conhecer a nossa padaria.
 
-> **After**
+> **Depois**
 > A Padaria Lúcia fica no bairro da Ponta Verde, em Maceió. Foi fundada em 1998 por Lúcia Ferreira e é conhecida pelo pão de queijo e pelo bolo de macaxeira.
 >
 > Abrimos todos os dias, das 6h às 20h.
